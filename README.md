@@ -12,6 +12,8 @@ pnpm dev
 
 `http://localhost:3000` を開いてください。Supabase接続前でも、サンプルデータのダッシュボードUIを確認できます。
 
+DBの作成手順は`supabase/README.md`を参照してください。マイグレーション適用後、Supabase AuthでGoogle Providerと`http://localhost:3000/auth/callback`を設定します。
+
 ## 技術構成
 
 - Next.js 16 / React 19 / TypeScript / Tailwind CSS

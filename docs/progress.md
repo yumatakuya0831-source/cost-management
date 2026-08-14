@@ -26,6 +26,7 @@
 | 2026-08-15 | development-progress | requirements | 完了条件を確認し、設計フェーズへの移行を承認 |
 | 2026-08-15 | system-design | design | システム構成、DB、RLS、Google OAuth、原価計算、画面、実装順序を確定 |
 | 2026-08-15 | development-progress | design | 設計完了条件を確認し、実装フェーズへの移行を承認 |
+| 2026-08-15 | nextjs-supabase-implementation | implementation | DBマイグレーション、原価計算関数、RLS、SSR Google認証基盤を実装。lint・build成功 |
 
 ## 決定事項
 
@@ -43,15 +44,17 @@
 | P-02 | Google OAuthの許可ユーザーフローを設計する | 解決済み | system-design |
 | P-03 | 新形式Publishable Key使用時のSupabaseクライアント構成を設計へ反映する | 解決済み | system-design |
 | P-04 | 初期管理者のGoogleメールをSupabaseへ安全に登録する | 未解決 | implementation |
+| P-05 | マイグレーション0001〜0006をSupabaseへ適用し、RLS実動作を確認する | 未解決 | implementation |
 
 ## 次に行うこと
 
 `nextjs-supabase-implementation` skillを使い、設計書の実装順序に沿って着手する。
 
-1. Supabaseマイグレーション0001〜0006
-2. DB関数・RLS自動テスト
-3. SSRクライアント・proxy・OAuth callback
-4. ログインと許可ユーザー確認
+1. Supabaseマイグレーション0001〜0006を対象プロジェクトへ適用
+2. 初期管理者メールをSQL Editorから登録
+3. Google ProviderとRedirect URLsを設定
+4. 管理者・一般・未許可ユーザーでRLSとログインを確認
+5. 管理画面と実データダッシュボードを実装
 
 ## 実装フェーズ完了基準
 
