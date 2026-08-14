@@ -1,0 +1,4 @@
+interface:
+  display_name: "Next.js Supabase Implementation"
+  short_description: "Implement approved Next.js and Supabase system designs"
+  default_prompt: "Implement the approved design safely and verify lint build and tests."

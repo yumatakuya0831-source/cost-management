@@ -1,0 +1,4 @@
+interface:
+  display_name: "Requirements Definition"
+  short_description: "Define cost management requirements and acceptance criteria"
+  default_prompt: "Clarify the cost management requirements and write verifiable acceptance criteria."

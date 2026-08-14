@@ -1,0 +1,4 @@
+interface:
+  display_name: "Development Progress"
+  short_description: "Track phases decisions verification and team handoffs"
+  default_prompt: "Update project progress decisions evidence blockers and the next handoff."

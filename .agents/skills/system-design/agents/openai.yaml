@@ -1,0 +1,4 @@
+interface:
+  display_name: "System Design"
+  short_description: "Design Next.js Supabase screens data and access control"
+  default_prompt: "Design the screens database permissions and cost calculations from approved requirements."

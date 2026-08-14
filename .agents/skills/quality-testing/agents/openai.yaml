@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quality Testing"
+  short_description: "Test calculations authentication authorization and UI behavior"
+  default_prompt: "Create and run tests for calculations authentication permissions and key screens."
