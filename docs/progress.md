@@ -41,6 +41,8 @@
 | 2026-08-15 | quality-testing | test | lint・build、初期管理者表示、連携済みメールの読み取り専用、権限・有効状態編集UI、ダッシュボード導線、ブラウザエラー0件を確認 |
 | 2026-08-15 | quality-testing | test | `【検証】`付きの材料5件、購入先1件、仕入価格5件、商品3件、レシピ5明細、2026年8月販売数を登録。全マスタが編集可能で、レシピ明細は削除可能 |
 | 2026-08-15 | nextjs-supabase-implementation | implementation | 原価再計算で発見したPL/pgSQL出力変数と列名の衝突を修正するマイグレーション0007を追加 |
+| 2026-08-15 | nextjs-supabase-implementation | implementation | 購入先の担当者・連絡先・住所・発注方法・支払条件・納期を追加し、取扱材料の複数紐付けと仕入価格登録時の自動紐付けを実装 |
+| 2026-08-15 | quality-testing | test | 購入先拡張後のlint・TypeScript・production build成功。画面実動作は0008適用待ち |
 
 ## 決定事項
 
@@ -64,9 +66,10 @@
 
 `nextjs-supabase-implementation` skillを使い、設計書の実装順序に沿って着手する。
 
-1. Supabase SQL Editorでマイグレーション0007を適用
-2. 2026年8月の原価再計算を再実行し、期待値と照合
-3. 一般・未許可ユーザーを含むRLS・認可テストを実施
+1. Supabase SQL Editorでマイグレーション0007、0008を順に適用
+2. 購入先詳細・取扱材料の表示と更新を確認
+3. 2026年8月の原価再計算を再実行し、期待値と照合
+4. 一般・未許可ユーザーを含むRLS・認可テストを実施
 
 ## 実装フェーズ完了基準
 

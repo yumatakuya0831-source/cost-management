@@ -51,6 +51,11 @@ export async function savePurchasePrice(_previousState: MasterActionState, formD
     if (error.code === "23514") return { status: "error", message: "材料と内容量の単位種類が一致していません。" };
     return { status: "error", message: "仕入価格を保存できませんでした。" };
   }
+  const { error: linkError } = await supabase.from("supplier_ingredients").upsert(
+    { supplier_id: parsed.data.supplierId, ingredient_id: parsed.data.ingredientId },
+    { onConflict: "supplier_id,ingredient_id", ignoreDuplicates: true },
+  );
+  if (linkError) return { status: "error", message: "仕入価格は保存しましたが、購入先と材料を紐付けできませんでした。" };
   revalidatePath("/admin/suppliers");
   return { status: "success", message: parsed.data.id ? "仕入価格を更新しました。" : "仕入価格を登録しました。" };
 }

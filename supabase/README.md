@@ -3,6 +3,7 @@
 マイグレーションは番号順に適用します。実際のユーザー、仕入価格、レシピはPublic GitHubへ追加しません。
 
 既に0001〜0006を適用済みの環境では、原価再計算関数の列名衝突を修正するため`0007_fix_recalculation_variable_conflict.sql`も実行してください。
+購入先詳細と取扱材料の紐付けを使うには、続けて`0008_supplier_details_and_ingredients.sql`を実行してください。
 
 ## 適用順序
 
