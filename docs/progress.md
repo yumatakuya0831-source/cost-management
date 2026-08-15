@@ -45,6 +45,8 @@
 | 2026-08-15 | quality-testing | test | 購入先拡張後のlint・TypeScript・production build成功。画面実動作は0008適用待ち |
 | 2026-08-15 | quality-testing | test | 0008適用後、購入先詳細フォーム、既存価格からの取扱材料5件補完、編集状態、ブラウザエラー0件を確認 |
 | 2026-08-15 | quality-testing | test | 0007適用後の原価再計算に成功。カレー74円、タコス133.333333円、コーヒー30円、月間売上192,000円・原価23,753.3333円を照合 |
+| 2026-08-15 | nextjs-supabase-implementation | implementation | 管理者・一般ユーザーのアカウント切替試験に必要なログアウト導線をPC・モバイルのダッシュボードへ追加 |
+| 2026-08-15 | quality-testing | test | ログアウト導線追加後のlint・build、ボタン表示、Server Action接続、ブラウザエラー0件を確認。実ログアウトは一般ユーザー試験時に実施 |
 
 ## 決定事項
 
@@ -68,7 +70,7 @@
 
 `nextjs-supabase-implementation` skillを使い、設計書の実装順序に沿って着手する。
 
-1. 一般ユーザー用Googleアカウントを登録
+1. 一般ユーザー用Googleアカウントのメールアドレスをユーザーから受領して登録
 2. 一般ユーザーで秘密・公開レシピと管理画面拒否を確認
 3. 未許可Googleアカウントのログイン拒否を確認
 
