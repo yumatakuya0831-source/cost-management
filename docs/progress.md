@@ -51,6 +51,7 @@
 | 2026-08-15 | quality-testing | test | 一般ユーザーのGoogleログイン、管理メニュー非表示、秘密レシピ非表示、管理画面URLからダッシュボードへのリダイレクトを実機確認。未登録アカウント試験はアカウント不足で保留 |
 | 2026-08-15 | nextjs-supabase-implementation | implementation | 商品の目標原価率を月次実績と比較し、超過件数アラート、商品行強調、目標値表示をダッシュボードへ追加。lint・production build成功 |
 | 2026-08-15 | nextjs-supabase-implementation | implementation | 管理者専用の操作履歴画面を追加。日時・操作者・対象・操作・レコードIDを新しい順に200件表示し、対象・操作で絞り込み可能。ダッシュボード導線、RLS前提、lint・production build成功 |
+| 2026-08-15 | nextjs-supabase-implementation | implementation | 新規許可ユーザーの権限を一般ユーザーに固定。登録後の編集時のみ管理者へ変更可能とし、Server Actionでも新規管理者指定を強制的に一般へ補正。lint・production build成功 |
 
 ## 決定事項
 

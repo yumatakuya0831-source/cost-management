@@ -32,7 +32,8 @@ export async function saveAppUser(
     return { status: "error", message: "入力内容を確認してください。", fieldErrors: parsed.error.flatten().fieldErrors };
   }
 
-  const { id, email, displayName, role, isActive } = parsed.data;
+  const { id, email, displayName, role: requestedRole, isActive } = parsed.data;
+  const role = id ? requestedRole : "viewer";
   const supabase = await createClient();
 
   if (id) {

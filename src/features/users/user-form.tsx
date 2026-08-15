@@ -27,7 +27,7 @@ export function UserForm({ user }: { user?: AppUserInput }) {
         <input className="master-input" name="displayName" defaultValue={user?.display_name} required maxLength={100} />
       </Field>
       <Field label="権限" error={fieldError("role")}>
-        <select className="master-input" name="role" defaultValue={user?.role ?? "viewer"}><option value="viewer">一般ユーザー</option><option value="admin">管理者</option></select>
+        {user ? <select className="master-input" name="role" defaultValue={user.role}><option value="viewer">一般ユーザー</option><option value="admin">管理者</option></select> : <><input name="role" type="hidden" value="viewer" /><div className="master-input bg-stone-50 text-stone-600" aria-label="権限">一般ユーザー（登録後に変更できます）</div></>}
       </Field>
       <div className="flex items-end pb-2"><label className="flex items-center gap-2 text-sm"><input name="isActive" type="checkbox" defaultChecked={user?.is_active ?? true} /> 利用を許可する</label></div>
       {user?.auth_user_id && <p className="text-xs text-stone-500 sm:col-span-2">Googleログイン連携済みのため、メールアドレスは変更できません。</p>}
