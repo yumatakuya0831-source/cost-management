@@ -15,8 +15,8 @@
 | Supabase接続 | 完了 | SSRクライアントからカテゴリ・商品・購入先を取得 |
 | Google認証 | 完了 | Googleログイン後に`/`へ遷移し、認証済み画面を確認 |
 | DB・RLS | 進行中 | マイグレーション0001〜0006適用済み、管理者SELECT確認済み |
-| 機能実装 | 進行中 | 商品・購入先マスタの一覧・登録・更新を実装 |
-| テスト | 進行中 | `docs/test-report.md`、lint・build・管理者画面確認成功 |
+| 機能実装 | 進行中 | 商品・購入先・材料・仕入価格の一覧・登録・更新を実装 |
+| テスト | 進行中 | `docs/test-report.md`、lint・build・管理者マスタ画面確認成功 |
 
 ## 作業履歴
 
@@ -29,6 +29,8 @@
 | 2026-08-15 | nextjs-supabase-implementation | implementation | DBマイグレーション、原価計算関数、RLS、SSR Google認証基盤を実装。lint・build成功 |
 | 2026-08-15 | nextjs-supabase-implementation | implementation | 商品マスタ・購入先マスタのServer Component、Zod検証付きServer Action、登録・更新フォームを実装 |
 | 2026-08-15 | quality-testing | test | lint・build、管理者画面、Supabaseカテゴリ取得、空状態、ブラウザエラー0件を確認 |
+| 2026-08-15 | nextjs-supabase-implementation | implementation | 材料マスタと購入先別仕入価格履歴を実装。税込価格、発注ロット、内容量、適用日、単位整合性を管理 |
+| 2026-08-15 | quality-testing | test | lint・build、7単位取得、材料・仕入価格の空状態、前提データ不足時の登録無効化、ブラウザエラー0件を確認 |
 
 ## 決定事項
 
@@ -52,10 +54,10 @@
 
 `nextjs-supabase-implementation` skillを使い、設計書の実装順序に沿って着手する。
 
-1. 材料マスタと仕入価格（購入先・材料・ロット・税込価格・内容量・適用日）を実装
-2. 商品レシピ編集と秘密レシピ取得制御を実装
-3. 月次販売個数入力と原価再計算を実装
-4. ダッシュボードをSupabase実データへ接続
+1. 商品レシピ編集と秘密レシピ取得制御を実装
+2. 月次販売個数入力と原価再計算を実装
+3. ダッシュボードをSupabase実データへ接続
+4. ユーザー管理を実装
 5. 一般・未許可ユーザーを含むRLS・認可テストを実施
 
 ## 実装フェーズ完了基準
@@ -67,4 +69,4 @@
 
 ## 【次のAIへの引き継ぎ事項】
 
-`docs/requirements.md`と`docs/design.md`文書版1.0を正とする。Google認証、管理者登録、DB適用、商品・購入先マスタ初版まで完了。次は材料・仕入価格を実装し、秘密レシピ保護と原価スナップショットを優先してテストする。
+`docs/requirements.md`と`docs/design.md`文書版1.0を正とする。Google認証、DB適用、商品・購入先・材料・仕入価格マスタまで完了。次は商品レシピを実装し、秘密レシピ保護と原価スナップショットを優先してテストする。

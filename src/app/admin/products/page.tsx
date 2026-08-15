@@ -35,7 +35,7 @@ export default async function AdminProductsPage() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div><p className="text-sm font-semibold text-[#b66d27]">管理者メニュー</p><h1 className="mt-1 text-3xl font-bold">商品マスタ</h1><p className="mt-2 text-sm text-stone-500">商品、販売価格、出来上がり数量、レシピ公開設定を管理します。</p></div>
-          <nav className="flex gap-2"><Link className="master-link" href="/">ダッシュボード</Link><Link className="master-link" href="/admin/suppliers">購入先マスタ</Link></nav>
+          <nav className="flex flex-wrap gap-2"><Link className="master-link" href="/">ダッシュボード</Link><Link className="master-link" href="/admin/ingredients">材料</Link><Link className="master-link" href="/admin/suppliers">購入先・仕入価格</Link></nav>
         </div>
 
         {error && <div role="alert" className="mt-6 rounded-xl bg-red-50 p-4 text-sm text-red-700">データを取得できませんでした。画面を再読み込みしてください。</div>}
