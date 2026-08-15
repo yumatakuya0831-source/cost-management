@@ -47,6 +47,7 @@
 | 2026-08-15 | quality-testing | test | 0007適用後の原価再計算に成功。カレー74円、タコス133.333333円、コーヒー30円、月間売上192,000円・原価23,753.3333円を照合 |
 | 2026-08-15 | nextjs-supabase-implementation | implementation | 管理者・一般ユーザーのアカウント切替試験に必要なログアウト導線をPC・モバイルのダッシュボードへ追加 |
 | 2026-08-15 | quality-testing | test | ログアウト導線追加後のlint・build、ボタン表示、Server Action接続、ブラウザエラー0件を確認。実ログアウトは一般ユーザー試験時に実施 |
+| 2026-08-15 | nextjs-supabase-implementation | implementation | Google側の既存セッションで管理者が自動選択される問題に対応し、OAuth開始時にアカウント選択画面を必ず表示する設定を追加。lint・production build成功 |
 
 ## 決定事項
 

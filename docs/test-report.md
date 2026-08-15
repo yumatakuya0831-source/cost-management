@@ -73,6 +73,9 @@
 | T-062 | セッションUI | 管理者ダッシュボードを表示 | ログアウトボタンを表示 | 合格 |
 | T-063 | 静的解析 | ログアウト導線追加後に`pnpm lint` | エラー0件 | 合格 |
 | T-064 | 型・ビルド | ログアウト導線追加後に`pnpm build` | TypeScript・production build成功 | 合格 |
+| T-065 | 認証/アカウント切替 | Google OAuth開始オプションを確認 | ログインごとにGoogleアカウント選択画面を表示 | `prompt=select_account`を設定・合格 |
+| T-066 | 静的解析 | アカウント選択対応後に`pnpm lint` | エラー0件 | 合格 |
+| T-067 | 型・ビルド | アカウント選択対応後に`pnpm build` | TypeScript・production build成功 | 合格 |
 
 ## 未実施・次回対象
 

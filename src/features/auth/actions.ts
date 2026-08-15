@@ -16,7 +16,10 @@ export async function signInWithGoogle(formData: FormData) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
-    options: { redirectTo: `${siteUrl}/auth/callback?next=${encodeURIComponent(next)}` },
+    options: {
+      redirectTo: `${siteUrl}/auth/callback?next=${encodeURIComponent(next)}`,
+      queryParams: { prompt: "select_account" },
+    },
   });
 
   if (error || !data.url) redirect("/login?error=oauth_start_failed");
