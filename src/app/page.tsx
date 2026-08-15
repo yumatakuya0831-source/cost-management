@@ -28,12 +28,18 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ m
   const targetMonth = validMonth((await searchParams).month);
   const months = monthSequence(targetMonth, 7);
   const supabase = await createClient();
-  const [dashboardResults, categoryResult] = await Promise.all([
+  const [dashboardResults, categoryResult, targetResult] = await Promise.all([
     Promise.all(months.map((month) => supabase.rpc("get_monthly_dashboard", { requested_month: `${month}-01` }))),
     supabase.from("categories").select("id,name").order("sort_order"),
+    supabase.from("products").select("id,target_cost_rate").eq("is_active", true),
   ]);
   const dashboards = dashboardResults.map((result, index) => (result.data as DashboardData | null) ?? emptyDashboard(months[index]));
   const current = dashboards.at(-1) ?? emptyDashboard(targetMonth);
+  const targetRates = new Map(((targetResult.data ?? []) as { id: string; target_cost_rate: number | null }[]).map((product) => [product.id, product.target_cost_rate]));
+  const currentWithTargets: DashboardData = {
+    ...current,
+    products: current.products.map((product) => ({ ...product, targetCostRate: targetRates.get(product.productId) ?? null })),
+  };
   const previous = dashboards.at(-2) ?? null;
   const history: DashboardMonthPoint[] = dashboards.slice(-6).map((data, index) => ({ month: `${Number(months[index + 1].slice(5))}月`, cost: data.costRate == null ? null : Number(data.costRate) * 100 }));
   const categoryNames = Object.fromEntries(((categoryResult.data ?? []) as { id: string; name: string }[]).map((category) => [category.id, category.name]));
@@ -43,7 +49,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ m
     categoryTotals.set(categoryName, (categoryTotals.get(categoryName) ?? 0) + Number(product.monthlyRevenue));
   });
   const categorySales = [...categoryTotals].map(([name, revenue]) => ({ name, revenue, value: Number(current.totalRevenue) > 0 ? revenue / Number(current.totalRevenue) * 100 : 0 }));
-  const hasError = Boolean(categoryResult.error || dashboardResults.some((result) => result.error));
+  const hasError = Boolean(categoryResult.error || targetResult.error || dashboardResults.some((result) => result.error));
 
-  return <DashboardView data={current} previous={previous} history={history} categorySales={categorySales} targetMonth={targetMonth} isAdmin={user.role === "admin"} displayName={user.display_name} hasError={hasError} />;
+  return <DashboardView data={currentWithTargets} previous={previous} history={history} categorySales={categorySales} targetMonth={targetMonth} isAdmin={user.role === "admin"} displayName={user.display_name} hasError={hasError} />;
 }
