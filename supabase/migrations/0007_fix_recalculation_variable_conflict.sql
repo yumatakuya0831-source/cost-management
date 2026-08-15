@@ -15,7 +15,7 @@ begin
   patched_definition := regexp_replace(
     function_definition,
     E'(AS\\s+\\$[^$]*\\$\\s*)',
-    E'\\1#variable_conflict use_column\\n',
+    E'\\1#variable_conflict use_column\n',
     'i'
   );
 
