@@ -12,11 +12,11 @@
 | 要件整理 | 完了 | `docs/requirements.md` 文書版1.0、ユーザー承認（2026-08-15） |
 | システム設計 | 完了 | `docs/design.md` 文書版1.0、設計検証チェック完了 |
 | UI初版 | 完了 | `src/app/page.tsx`、lint・production build成功 |
-| Supabase接続 | 進行中 | `src/lib/supabase/client.ts`、Auth API HTTP 200確認 |
-| Google認証 | 未着手 | - |
-| DB・RLS | 未着手 | - |
-| 機能実装 | 進行中 | 次にDBマイグレーション0001〜0006を作成 |
-| テスト | 未着手 | - |
+| Supabase接続 | 完了 | SSRクライアントからカテゴリ・商品・購入先を取得 |
+| Google認証 | 完了 | Googleログイン後に`/`へ遷移し、認証済み画面を確認 |
+| DB・RLS | 進行中 | マイグレーション0001〜0006適用済み、管理者SELECT確認済み |
+| 機能実装 | 進行中 | 商品・購入先マスタの一覧・登録・更新を実装 |
+| テスト | 進行中 | `docs/test-report.md`、lint・build・管理者画面確認成功 |
 
 ## 作業履歴
 
@@ -27,6 +27,8 @@
 | 2026-08-15 | system-design | design | システム構成、DB、RLS、Google OAuth、原価計算、画面、実装順序を確定 |
 | 2026-08-15 | development-progress | design | 設計完了条件を確認し、実装フェーズへの移行を承認 |
 | 2026-08-15 | nextjs-supabase-implementation | implementation | DBマイグレーション、原価計算関数、RLS、SSR Google認証基盤を実装。lint・build成功 |
+| 2026-08-15 | nextjs-supabase-implementation | implementation | 商品マスタ・購入先マスタのServer Component、Zod検証付きServer Action、登録・更新フォームを実装 |
+| 2026-08-15 | quality-testing | test | lint・build、管理者画面、Supabaseカテゴリ取得、空状態、ブラウザエラー0件を確認 |
 
 ## 決定事項
 
@@ -43,18 +45,18 @@
 | P-01 | DBスキーマとRLSポリシーを設計する | 解決済み | system-design |
 | P-02 | Google OAuthの許可ユーザーフローを設計する | 解決済み | system-design |
 | P-03 | 新形式Publishable Key使用時のSupabaseクライアント構成を設計へ反映する | 解決済み | system-design |
-| P-04 | 初期管理者のGoogleメールをSupabaseへ安全に登録する | 未解決 | implementation |
-| P-05 | マイグレーション0001〜0006をSupabaseへ適用し、RLS実動作を確認する | 未解決 | implementation |
+| P-04 | 初期管理者のGoogleメールをSupabaseへ安全に登録する | 解決済み | implementation |
+| P-05 | マイグレーション0001〜0006をSupabaseへ適用し、RLS実動作を確認する | 進行中（管理者確認済み） | implementation |
 
 ## 次に行うこと
 
 `nextjs-supabase-implementation` skillを使い、設計書の実装順序に沿って着手する。
 
-1. Supabaseマイグレーション0001〜0006を対象プロジェクトへ適用
-2. 初期管理者メールをSQL Editorから登録
-3. Google ProviderとRedirect URLsを設定
-4. 管理者・一般・未許可ユーザーでRLSとログインを確認
-5. 管理画面と実データダッシュボードを実装
+1. 材料マスタと仕入価格（購入先・材料・ロット・税込価格・内容量・適用日）を実装
+2. 商品レシピ編集と秘密レシピ取得制御を実装
+3. 月次販売個数入力と原価再計算を実装
+4. ダッシュボードをSupabase実データへ接続
+5. 一般・未許可ユーザーを含むRLS・認可テストを実施
 
 ## 実装フェーズ完了基準
 
@@ -65,4 +67,4 @@
 
 ## 【次のAIへの引き継ぎ事項】
 
-`docs/requirements.md`と`docs/design.md`文書版1.0を正とする。DB・RLSから実装し、秘密レシピ保護と原価スナップショットを最優先で自動テストする。
+`docs/requirements.md`と`docs/design.md`文書版1.0を正とする。Google認証、管理者登録、DB適用、商品・購入先マスタ初版まで完了。次は材料・仕入価格を実装し、秘密レシピ保護と原価スナップショットを優先してテストする。

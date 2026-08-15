@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowDownRight, ArrowUpRight, Coffee, LayoutDashboard, PackageOpen, Settings, ShoppingBasket, Store, Users } from "lucide-react";
+import Link from "next/link";
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 const monthlyCosts = [
@@ -16,7 +17,7 @@ const productCosts = [
   { name: "ソフトドリンク", cost: 72, price: 380, rate: 18.9, color: "bg-sky-500" },
 ];
 
-const navItems = [[LayoutDashboard, "ダッシュボード"], [PackageOpen, "商品マスタ"], [ShoppingBasket, "材料・購入先"], [Store, "販売実績"], [Users, "ユーザー管理"]] as const;
+const navItems = [[LayoutDashboard, "ダッシュボード", "/"], [PackageOpen, "商品マスタ", "/admin/products"], [ShoppingBasket, "材料・購入先", "/admin/suppliers"], [Store, "販売実績", "#"], [Users, "ユーザー管理", "#"]] as const;
 const yen = (value: number) => `${new Intl.NumberFormat("ja-JP").format(value)}円`;
 
 export default function Home() {
@@ -28,10 +29,10 @@ export default function Home() {
           <div><p className="text-lg font-bold tracking-wide">COST TABLE</p><p className="text-xs text-emerald-100/70">原価管理システム</p></div>
         </div>
         <nav className="mt-10 space-y-2">
-          {navItems.map(([Icon, label], index) => (
-            <button key={label} className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm transition ${index === 0 ? "bg-white/14 font-semibold" : "text-emerald-50/70 hover:bg-white/8 hover:text-white"}`}>
+          {navItems.map(([Icon, label, href], index) => (
+            <Link href={href} key={label} className={`flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-sm transition ${index === 0 ? "bg-white/14 font-semibold" : "text-emerald-50/70 hover:bg-white/8 hover:text-white"}`}>
               <Icon size={18} />{label}
-            </button>
+            </Link>
           ))}
         </nav>
         <div className="mt-auto rounded-2xl bg-white/8 p-4"><p className="text-xs text-emerald-100/60">ログイン中</p><p className="mt-1 text-sm font-semibold">管理者</p><button className="mt-4 flex items-center gap-2 text-xs text-emerald-50/70"><Settings size={15} /> 設定</button></div>

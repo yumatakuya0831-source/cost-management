@@ -5,3 +5,6 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, "Noto Sans JP", sans-serif; }
 button { cursor: pointer; }
+.master-input { width: 100%; border: 1px solid #d6d3d1; border-radius: 0.75rem; background: white; padding: 0.7rem 0.8rem; color: #28251f; outline: none; }
+.master-input:focus { border-color: #316c5e; box-shadow: 0 0 0 3px rgba(49, 108, 94, 0.12); }
+.master-link { border: 1px solid #d6d3d1; border-radius: 0.75rem; background: white; padding: 0.65rem 0.9rem; font-size: 0.875rem; font-weight: 600; }
