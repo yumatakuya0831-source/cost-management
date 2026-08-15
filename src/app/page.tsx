@@ -17,7 +17,7 @@ const productCosts = [
   { name: "ソフトドリンク", cost: 72, price: 380, rate: 18.9, color: "bg-sky-500" },
 ];
 
-const navItems = [[LayoutDashboard, "ダッシュボード", "/"], [PackageOpen, "商品マスタ", "/admin/products"], [ShoppingBasket, "材料マスタ", "/admin/ingredients"], [Store, "購入先・仕入価格", "/admin/suppliers"], [Users, "ユーザー管理", "#"]] as const;
+const navItems = [[LayoutDashboard, "ダッシュボード", "/"], [PackageOpen, "商品マスタ", "/admin/products"], [ShoppingBasket, "材料マスタ", "/admin/ingredients"], [Store, "購入先・仕入価格", "/admin/suppliers"], [Users, "販売実績", "/admin/sales"]] as const;
 const yen = (value: number) => `${new Intl.NumberFormat("ja-JP").format(value)}円`;
 
 export default function Home() {
