@@ -53,7 +53,7 @@ export default async function AdminProductsPage() {
                   <span><span className="font-semibold">{product.name}</span><span className="ml-3 text-sm text-stone-500">{product.categories?.name ?? "カテゴリ未設定"}</span></span>
                   <span className="flex items-center gap-3 text-sm"><span>{Math.round(product.sale_price_tax_included).toLocaleString("ja-JP")}円</span><span className={`rounded-full px-2.5 py-1 text-xs font-semibold ${product.is_active ? "bg-emerald-50 text-emerald-700" : "bg-stone-100 text-stone-500"}`}>{product.is_active ? "有効" : "無効"}</span></span>
                 </summary>
-                <div className="mt-5 border-t border-stone-100 pt-5"><ProductForm categories={categories} product={product} /></div>
+                <div className="mt-5 border-t border-stone-100 pt-5"><ProductForm categories={categories} product={product} /><div className="mt-4 border-t border-stone-100 pt-4"><Link className="inline-flex rounded-lg bg-[#f2ae41] px-4 py-2 text-sm font-semibold text-[#183c35]" href={`/admin/products/${product.id}`}>レシピを編集</Link></div></div>
               </details>
             ))}</div>
           )}
