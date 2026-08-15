@@ -172,6 +172,7 @@ language plpgsql
 security definer
 set search_path = ''
 as $$
+#variable_conflict use_column
 declare
   month_start date := date_trunc('month', requested_month)::date;
   month_end date := (date_trunc('month', requested_month) + interval '1 month - 1 day')::date;

@@ -2,6 +2,8 @@
 
 マイグレーションは番号順に適用します。実際のユーザー、仕入価格、レシピはPublic GitHubへ追加しません。
 
+既に0001〜0006を適用済みの環境では、原価再計算関数の列名衝突を修正するため`0007_fix_recalculation_variable_conflict.sql`も実行してください。
+
 ## 適用順序
 
 1. `0001_extensions_enums.sql`
