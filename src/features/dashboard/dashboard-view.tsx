@@ -1,6 +1,6 @@
 "use client";
 
-import { Coffee, LayoutDashboard, LogOut, PackageOpen, ShoppingBasket, Store, Users } from "lucide-react";
+import { Coffee, History, LayoutDashboard, LogOut, PackageOpen, ShoppingBasket, Store, Users } from "lucide-react";
 import Link from "next/link";
 import { Bar, BarChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
@@ -16,7 +16,7 @@ const percent = (value: number | null) => value == null ? "-" : `${(value * 100)
 function percentageChange(current: number, previous: number | undefined) { return previous && previous !== 0 ? `${current >= previous ? "+" : ""}${((current - previous) / previous * 100).toFixed(1)}%` : "比較なし"; }
 
 export function DashboardView({ data, previous, history, categorySales, targetMonth, isAdmin, displayName, hasError }: { data: DashboardData; previous: DashboardData | null; history: DashboardMonthPoint[]; categorySales: CategorySale[]; targetMonth: string; isAdmin: boolean; displayName: string; hasError: boolean }) {
-  const navItems = isAdmin ? [[LayoutDashboard, "ダッシュボード", "/"], [PackageOpen, "商品マスタ", "/admin/products"], [ShoppingBasket, "材料マスタ", "/admin/ingredients"], [Store, "購入先・仕入価格", "/admin/suppliers"], [Users, "販売実績", "/admin/sales"], [Users, "ユーザー管理", "/admin/users"]] as const : [[LayoutDashboard, "ダッシュボード", "/"], [PackageOpen, "商品一覧", "/products"]] as const;
+  const navItems = isAdmin ? [[LayoutDashboard, "ダッシュボード", "/"], [PackageOpen, "商品マスタ", "/admin/products"], [ShoppingBasket, "材料マスタ", "/admin/ingredients"], [Store, "購入先・仕入価格", "/admin/suppliers"], [Users, "販売実績", "/admin/sales"], [Users, "ユーザー管理", "/admin/users"], [History, "操作履歴", "/admin/audit"]] as const : [[LayoutDashboard, "ダッシュボード", "/"], [PackageOpen, "商品一覧", "/products"]] as const;
   const [year, month] = targetMonth.split("-");
   const cards = [
     ["月間売上", yen(Number(data.totalRevenue)), percentageChange(Number(data.totalRevenue), previous ? Number(previous.totalRevenue) : undefined)],
